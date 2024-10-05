@@ -9,11 +9,13 @@ export const plugins = [
   new ForkTsCheckerWebpackPlugin({
     logger: "webpack-infrastructure",
   }),
+  // This does not seem to work
   // new webpack.ProvidePlugin({
   //   $: "jquery",
   //   jQuery: "jquery",
   // }),
   new CopyPlugin({
+    // This copies to both .webpack/(main/ & renderer/)
     patterns: [
       {
         from: "jquery.min.js",
