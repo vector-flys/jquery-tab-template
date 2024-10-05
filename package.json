@@ -2,8 +2,9 @@
   "name": "jquery-tab-template",
   "productName": "jquery-tab-template",
   "version": "1.0.0",
-  "description": "Race Glidepath guides you on an average-speed race track",
+  "description": "Tab Templates is a starting point for a tabbed-application",
   "main": ".webpack/main",
+  "engines" : { "node" : "=20" }, 
   "build~extraFiles": [
     {
       "from": "node_modules/jquery/dist/jquery.min.js",
@@ -18,7 +19,9 @@
   },
   "scripts": {
     "start": "electron-forge start",
+    "clean": "rm -rf node_modules out/ .webpack/ dist/",
     "package": "electron-forge package",
+    "package-mac": "electron-forge package --platform=darwin",
     "make": "electron-forge make",
     "build": "electron-builder build",
     "publish": "electron-forge publish",
