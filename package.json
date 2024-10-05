@@ -3,16 +3,21 @@
   "productName": "jquery-tab-template",
   "version": "1.0.0",
   "description": "Tab Templates is a starting point for a tabbed-application",
-  "main": ".webpack/main",
-  "engines" : { "node" : "=20" }, 
+  "engines": {
+    "node": "=20"
+  },
   "build~extraFiles": [
     {
       "from": "node_modules/jquery/dist/jquery.min.js",
       "to": "jquery"
     }
   ],
+  "main": ".webpack/main",
   "build": {
     "appId": "com.electron.jquery-tab-template",
+    "dmg": {
+      "title": "${productName} ${version}"
+    },
     "mac": {
       "category": "navigation"
     }
@@ -23,7 +28,6 @@
     "package": "electron-forge package",
     "package-mac": "electron-forge package --platform=darwin",
     "make": "electron-forge make",
-    "build": "electron-builder build",
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx ."
   },
@@ -45,7 +49,6 @@
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^6.0.0",
     "electron": "32.1.2",
-    "electron-builder": "^25.1.7",
     "eslint": "^8.0.1",
     "eslint-plugin-import": "^2.25.0",
     "fork-ts-checker-webpack-plugin": "^7.2.13",
