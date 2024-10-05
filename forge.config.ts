@@ -16,30 +16,30 @@ const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
     overwrite: true,
-    // prune: false, // do not prune node_modules - creates an app.asar ~500MB
-    // ignore: ["^/src", "^/out", "^/dist"],
-    // It appears that the regular dependencies were getting pruned out as well as dev dependencies
-    //   so we have to manually copy them to the same place webpack would have put them...
-    afterCopy: [
-      (buildPath, electronVersion, platform, arch, callback) => {
-        const fs = require("fs-extra");
-        const src = path.join(__dirname, "node_modules/jquery/dist");
-        const dest = path.join(
-          buildPath,
-          ".webpack/renderer/main_window/jquery"
-        );
-        fs.copy(src, dest, callback);
-      },
-      (buildPath, electronVersion, platform, arch, callback) => {
-        const fs = require("fs-extra");
-        const src = path.join(__dirname, "node_modules/jquery-ui/dist");
-        const dest = path.join(
-          buildPath,
-          ".webpack/renderer/main_window/jquery"
-        );
-        fs.copy(src, dest, callback);
-      },
-    ],
+    // // prune: false, // do not prune node_modules - creates an app.asar ~500MB
+    // // ignore: ["^/src", "^/out", "^/dist"],
+    // // It appears that the regular dependencies were getting pruned out as well as dev dependencies
+    // //   so we have to manually copy them to the same place webpack would have put them...
+    // afterCopy: [
+    //   (buildPath, electronVersion, platform, arch, callback) => {
+    //     const fs = require("fs-extra");
+    //     const src = path.join(__dirname, "node_modules/jquery/dist");
+    //     const dest = path.join(
+    //       buildPath,
+    //       ".webpack/renderer/main_window/jquery"
+    //     );
+    //     fs.copy(src, dest, callback);
+    //   },
+    //   // (buildPath, electronVersion, platform, arch, callback) => {
+    //   //   const fs = require("fs-extra");
+    //   //   const src = path.join(__dirname, "node_modules/jquery-ui/dist");
+    //   //   const dest = path.join(
+    //   //     buildPath,
+    //   //     ".webpack/renderer/main_window/jquery"
+    //   //   );
+    //   //   fs.copy(src, dest, callback);
+    //   // },
+    // ],
   },
   rebuildConfig: {},
   makers: [
@@ -61,6 +61,7 @@ const config: ForgeConfig = {
           {
             html: "./src/index.html",
             js: "./src/renderer.ts",
+            // This puts the code under .webpack/renderer/main_window instead of .webpack/main
             name: "main_window",
             preload: {
               js: "./src/preload.ts",

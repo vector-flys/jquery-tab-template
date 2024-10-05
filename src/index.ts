@@ -16,6 +16,7 @@ const createWindow = (): void => {
     height: 576,
     width: 1024,
     webPreferences: {
+      //  Adjust location to where webpack actually put stuff...
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
       webSecurity: false,
     },
