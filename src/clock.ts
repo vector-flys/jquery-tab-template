@@ -30,7 +30,7 @@ export class Clock {
     this._clockElement = document.getElementById(
       "gpsClock"
     ) as HTMLTableRowElement;
-    this._clockElement.cells[0].innerText = `GPS Clock (UTC${
+    this._clockElement.cells[0].innerText = `System Clock (UTC${
       (offset < 0 ? "" : "+") + offset
     })`;
     this.draw();
